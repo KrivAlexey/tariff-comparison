@@ -1,5 +1,8 @@
+using CalculationModelCalculator;
+
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddSingleton<Calculator>();
 builder.Services.AddSwaggerGen();
 var mvcBuilder = builder.Services.AddControllers();
 mvcBuilder.AddControllersAsServices();
