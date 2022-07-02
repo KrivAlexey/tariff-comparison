@@ -2,6 +2,12 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TariffComparison", "TariffComparison\TariffComparison.csproj", "{FDD44138-D74E-4BC6-9189-86D46A81A879}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{EECB1F5C-9252-4BD6-BD7E-45BCD95C814B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalculationModelParser", "CalculationModelParser\CalculationModelParser.csproj", "{489CECAA-F44D-4E7A-B9EE-CBF418C826BC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalculationModelTests", "CalculationModelTests\CalculationModelTests.csproj", "{BFC63BC9-4CAC-4479-B4C4-D9FDCF8731F5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +18,16 @@ Global
 		{FDD44138-D74E-4BC6-9189-86D46A81A879}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FDD44138-D74E-4BC6-9189-86D46A81A879}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FDD44138-D74E-4BC6-9189-86D46A81A879}.Release|Any CPU.Build.0 = Release|Any CPU
+		{489CECAA-F44D-4E7A-B9EE-CBF418C826BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{489CECAA-F44D-4E7A-B9EE-CBF418C826BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{489CECAA-F44D-4E7A-B9EE-CBF418C826BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{489CECAA-F44D-4E7A-B9EE-CBF418C826BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BFC63BC9-4CAC-4479-B4C4-D9FDCF8731F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFC63BC9-4CAC-4479-B4C4-D9FDCF8731F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFC63BC9-4CAC-4479-B4C4-D9FDCF8731F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFC63BC9-4CAC-4479-B4C4-D9FDCF8731F5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{BFC63BC9-4CAC-4479-B4C4-D9FDCF8731F5} = {EECB1F5C-9252-4BD6-BD7E-45BCD95C814B}
 	EndGlobalSection
 EndGlobal
