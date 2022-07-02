@@ -17,7 +17,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\CalculationModelParser\CalculationModelParser.csproj" />
+      <ProjectReference Include="..\CalculationModelCalculator\CalculationModelCalculator.csproj" />
     </ItemGroup>
 
 </Project>
