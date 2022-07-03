@@ -1,9 +1,24 @@
+using System.Reflection;
 using CalculationModelCalculator;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddSingleton<Calculator>();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(config =>
+{
+    var xmlFile = $"{Assembly.GetEntryAssembly()?.GetName().Name}.xml";
+    var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+
+    var xmlDocExists = File.Exists(xmlPath);
+    if (xmlDocExists)
+    {
+        config.IncludeXmlComments(xmlPath);
+    }
+    
+    config.DescribeAllParametersInCamelCase();
+    config.UseAllOfToExtendReferenceSchemas();
+    config.SupportNonNullableReferenceTypes();
+});
 var mvcBuilder = builder.Services.AddControllers();
 mvcBuilder.AddControllersAsServices();
 
@@ -18,4 +33,5 @@ if (app.Environment.IsDevelopment())
         options.RoutePrefix = string.Empty;
     });
 }
+
 app.Run();
