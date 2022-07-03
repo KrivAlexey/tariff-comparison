@@ -1,3 +1,3 @@
 ﻿namespace TariffComparison;
 
-public record ComparisonResponseItem(string ProductName, double AnnualCost);
+public record ComparisonResponseItem(string TariffName, double AnnualCost);

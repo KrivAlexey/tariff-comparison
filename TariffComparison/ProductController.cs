@@ -1,6 +1,7 @@
 ﻿using System.Net.Mime;
 using CalculationModelCalculator;
 using Microsoft.AspNetCore.Mvc;
+using TariffComparison.Models;
 
 namespace TariffComparison;
 
@@ -22,8 +23,8 @@ public class ProductController : ControllerBase
     {
         return Ok(new[]
         {
-            new Product("Product A", "base costs per month 5 € + consumption costs 22 cent/kWh"),
-            new Product("Product B",
+            new Tariff("Product A", "base costs per month 5 € + consumption costs 22 cent/kWh"),
+            new Tariff("Product B",
                 "800 € for up to 4000 kWh/year and above 4000 kWh/year additionally 30cent/kWh."),
         });
     }
@@ -33,8 +34,8 @@ public class ProductController : ControllerBase
     {
         var products = new[]
         {
-            new Product("Product A", "60.0 + 0.22 * X"),
-            new Product("Product B", "if X <= 4000.0 then 800.0 else 800.0 + (X - 4000.0) * 0.3")
+            new Tariff("Product A", "60.0 + 0.22 * X"),
+            new Tariff("Product B", "if X <= 4000.0 then 800.0 else 800.0 + (X - 4000.0) * 0.3")
         };
 
         var comparisonResults = new List<ComparisonResponseItem>();
