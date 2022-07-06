@@ -1,5 +1,6 @@
 ﻿using JetBrains.Annotations;
 using sly.lexer;
+// ReSharper disable InconsistentNaming
 
 namespace CalculationModelCalculator;
 
