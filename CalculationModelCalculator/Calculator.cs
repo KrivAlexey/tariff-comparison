@@ -42,7 +42,7 @@ public class Calculator
         else
         {
             _logger.LogWarning("Can't calculate formula: {@CalculationFormula} with parameter {@Parameter}. Errors: {@Errors}", 
-                calculationFormula, parameter, parseResult.Errors);
+                calculationFormula, parameter, string.Join('\n', parseResult.Errors.Select(e => e.ErrorMessage)));
         }
 
         return parseResult.IsOk;
