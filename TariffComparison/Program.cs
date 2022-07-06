@@ -2,36 +2,41 @@ using System.Reflection;
 using CalculationModelCalculator;
 
 var builder = WebApplication.CreateBuilder(args);
-
-builder.Services.AddSingleton<Calculator>();
-builder.Services.AddSwaggerGen(config =>
-{
-    var xmlFile = $"{Assembly.GetEntryAssembly()?.GetName().Name}.xml";
-    var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
-
-    var xmlDocExists = File.Exists(xmlPath);
-    if (xmlDocExists)
-    {
-        config.IncludeXmlComments(xmlPath);
-    }
-    
-    config.DescribeAllParametersInCamelCase();
-    config.UseAllOfToExtendReferenceSchemas();
-    config.SupportNonNullableReferenceTypes();
-});
-var mvcBuilder = builder.Services.AddControllers();
-mvcBuilder.AddControllersAsServices();
+ConfigureServices(builder.Services);
 
 var app = builder.Build();
-app.MapControllers();
-if (app.Environment.IsDevelopment())
+ConfigureApp(app);
+app.Run();
+
+static void ConfigureApp(WebApplication app)
 {
-    app.UseSwagger();
-    app.UseSwaggerUI(options =>
+    app.MapControllers();
+    if (app.Environment.IsDevelopment())
     {
-        options.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
-        options.RoutePrefix = string.Empty;
-    });
+        app.UseSwagger();
+        app.UseSwaggerUI(options =>
+        {
+            options.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
+            options.RoutePrefix = string.Empty;
+        });
+    }
 }
 
-app.Run();
+static void ConfigureServices(IServiceCollection services)
+{
+    services.AddSingleton<Calculator>();
+    services.AddSwaggerGen(config =>
+    {
+        var xmlFile = $"{Assembly.GetEntryAssembly()?.GetName().Name}.xml";
+        var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+
+        var xmlDocExists = File.Exists(xmlPath);
+        if (xmlDocExists)
+        {
+            config.IncludeXmlComments(xmlPath);
+        }
+    });
+    
+    var mvcBuilder = services.AddControllers();
+    mvcBuilder.AddControllersAsServices();
+} 
