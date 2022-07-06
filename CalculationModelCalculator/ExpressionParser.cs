@@ -1,8 +1,10 @@
-﻿using sly.lexer;
+﻿using JetBrains.Annotations;
+using sly.lexer;
 using sly.parser.generator;
 
 namespace CalculationModelCalculator;
 
+[PublicAPI]
 internal class ExpressionParser
 {
     [Production("primary: DOUBLE")]

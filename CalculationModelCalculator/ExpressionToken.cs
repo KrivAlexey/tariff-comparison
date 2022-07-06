@@ -1,7 +1,9 @@
-﻿using sly.lexer;
+﻿using JetBrains.Annotations;
+using sly.lexer;
 
 namespace CalculationModelCalculator;
 
+[PublicAPI]
 internal enum ExpressionToken
 {
     [Keyword("if")]
