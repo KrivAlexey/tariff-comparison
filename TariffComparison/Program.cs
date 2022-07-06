@@ -1,5 +1,6 @@
 using System.Reflection;
 using CalculationModelCalculator;
+using TariffComparison;
 
 var builder = WebApplication.CreateBuilder(args);
 ConfigureServices(builder.Services);
@@ -25,6 +26,8 @@ static void ConfigureApp(WebApplication app)
 static void ConfigureServices(IServiceCollection services)
 {
     services.AddSingleton<Calculator>();
+    services.AddScoped<ITariffStorage, TariffStorage>();
+    
     services.AddSwaggerGen(config =>
     {
         var xmlFile = $"{Assembly.GetEntryAssembly()?.GetName().Name}.xml";
