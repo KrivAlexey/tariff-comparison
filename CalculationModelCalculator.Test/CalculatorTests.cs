@@ -1,3 +1,5 @@
+using Microsoft.Extensions.Logging.Abstractions;
+
 namespace CalculationModelCalculator.Test;
 
 public class Tests
@@ -7,7 +9,7 @@ public class Tests
     [OneTimeSetUp]
     public void SetUp()
     {
-        _calculator = new Calculator();
+        _calculator = new Calculator(NullLogger<Calculator>.Instance);
     }
     
     [Test]

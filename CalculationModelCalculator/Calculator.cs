@@ -1,4 +1,6 @@
 ﻿using System.Globalization;
+using CalculationModelCalculator.Exceptions;
+using Microsoft.Extensions.Logging;
 using sly.parser;
 using sly.parser.generator;
 
@@ -6,25 +8,26 @@ namespace CalculationModelCalculator;
 
 public class Calculator
 {
-    private readonly Parser<ExpressionToken, double> _parser = null!;
-    
-    public Calculator()
+    private readonly Parser<ExpressionToken, double> _parser;
+    private readonly ILogger<Calculator> _logger;
+
+    public Calculator(ILogger<Calculator> logger)
     {
+        _logger = logger;
         var expressionParserDefinition = new ExpressionParser();
         var builder = new ParserBuilder<ExpressionToken, double>();
 
         var parserResult = builder.BuildParser(expressionParserDefinition,
             ParserType.LL_RECURSIVE_DESCENT,
             "expression");
-        if (parserResult.IsOk) {
+        if (parserResult.IsOk)
+        {
             // everythin'fine : we have a configured parser
             _parser = parserResult.Result;
         }
-        else {
-            // something's wrong
-            foreach(var error in parserResult.Errors) {
-                Console.WriteLine($"{error.Code} : {error.Message}");
-            }    
+        else
+        {
+            throw new ParserBuildException(parserResult.Errors);
         }
     }
 
@@ -36,6 +39,11 @@ public class Calculator
         {
             result = parseResult.Result;
         }
+        else
+        {
+            _logger.LogWarning("Can't calculate formula: {@CalculationFormula} with parameter {@Parameter}. Errors: {@Errors}", 
+                calculationFormula, parameter, parseResult.Errors);
+        }
 
         return parseResult.IsOk;
     }
@@ -44,7 +52,7 @@ public class Calculator
     {
         if (parameter != null)
         {
-            return calculationFormula.Replace("X", 
+            return calculationFormula.Replace("X",
                 parameter.Value.ToString("000000.000", CultureInfo.InvariantCulture));
         }
 
