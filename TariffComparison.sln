@@ -6,7 +6,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{EECB1F5C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalculationModelCalculator", "CalculationModelCalculator\CalculationModelCalculator.csproj", "{489CECAA-F44D-4E7A-B9EE-CBF418C826BC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalculationModelCalculator.Test", "CalculationModelCalculator.Test\CalculationModelCalculator.Test.csproj", "{BFC63BC9-4CAC-4479-B4C4-D9FDCF8731F5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TariffComparison.Test", "TariffComparison.Test\TariffComparison.Test.csproj", "{BFC63BC9-4CAC-4479-B4C4-D9FDCF8731F5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

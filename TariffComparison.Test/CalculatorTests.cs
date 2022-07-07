@@ -1,6 +1,7 @@
+using CalculationModelCalculator;
 using Microsoft.Extensions.Logging.Abstractions;
 
-namespace CalculationModelCalculator.Test;
+namespace TariffComparison.Test;
 
 public class Tests
 {
