@@ -19,6 +19,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\CalculationModelCalculator\CalculationModelCalculator.csproj" />
+      <ProjectReference Include="..\TariffComparison\TariffComparison.csproj" />
     </ItemGroup>
 
 </Project>

@@ -73,3 +73,6 @@ static void ConfigureApp(WebApplication app)
     }
     app.UseSerilogRequestLogging();
 }
+
+// Entry point for the  WebApplicationFactory
+public partial class Program { }
